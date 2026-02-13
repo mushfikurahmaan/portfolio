@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+/* Design tokens */
+:root {
+  --page-bg: #ffffff;
+  --page-text: #0a0a0a;
+  --page-muted: #52525b;
+  --page-muted-light: #a1a1aa;
+  --page-border: #e5e5e5;
+  --content-max-w: 42rem;
+}
+
+@theme {
+  --color-page-bg: var(--page-bg);
+  --color-page-text: var(--page-text);
+  --color-page-muted: var(--page-muted);
+  --color-page-muted-light: var(--page-muted-light);
+  --color-page-border: var(--page-border);
+  --font-sans: var(--font-open-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--page-bg);
+  color: var(--page-text);
+}
+
+/* Screen: full viewport, content centered */
+.page-container {
+  @apply min-h-screen flex flex-col items-center px-4 py-8 md:py-12;
+}
+
+/* Website content: centered box (~2/3 width), vertical stack */
+.content-box {
+  @apply w-full max-w-[var(--content-max-w)] flex flex-col gap-0;
+}
+
+/* Section row: content only, no borders, minimal gap */
+.section-row {
+  @apply flex flex-col py-0.5 first:pt-0;
+}
+
+.section-content {
+  @apply min-w-0 flex-1 text-page-text;
+}
+
+/* Name: single-line display (reset p margin), slightly larger */
+.name-display {
+  @apply m-0 text-2xl text-page-text md:text-3xl;
+}
+
+/* Age: single-line, ~half width feel via max-width on content */
+.age-content {
+  @apply max-w-xs;
+}
+
+/* Age counter: year + live ms beside it, same font size (themeable via CSS vars) */
+.age-counter {
+  --age-years-color: var(--page-text);
+  --age-ms-color: var(--page-muted);
+  --age-font-size: 1.25rem;
+  font-size: var(--age-font-size);
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.35rem;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 768px) {
+  .age-counter {
+    --age-font-size: 1.5rem;
+  }
+}
+
+.age-years {
+  font-family: ui-monospace, monospace;
+  font-size: var(--age-font-size);
+  font-weight: 400;
+  color: var(--age-years-color);
+  line-height: 1.2;
+}
+
+.age-ms {
+  font-family: ui-monospace, monospace;
+  font-size: var(--age-font-size);
+  color: var(--age-ms-color);
+  letter-spacing: 0.02em;
+}
+
+.age-placeholder {
+  @apply text-lg text-page-muted-light md:text-xl;
+}
+
+/* Bio: multi-line block (reset p margin) */
+.bio-text {
+  @apply m-0 text-page-text leading-relaxed md:text-base;
+}
+
+/* Tech stacks: single-line list (reset p margin) */
+.tech-list {
+  @apply m-0 text-page-text md:text-base;
+}
+
+/* Contact: text links, 90s-style blue, tighter spacing */
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.5rem;
+}
+
+.contact-links a.link-text {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+.contact-links a.link-text:hover {
+  color: #004499;
+}
