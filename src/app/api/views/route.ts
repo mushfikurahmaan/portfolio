@@ -5,7 +5,7 @@ import path from "path";
 
 export const dynamic = "force-dynamic";
 
-function getClientIp(headersList: ReturnType<typeof headers>): string {
+function getClientIp(headersList: Awaited<ReturnType<typeof headers>>): string {
   const forwarded = headersList.get("x-forwarded-for");
   if (forwarded) {
     const first = forwarded.split(",")[0]?.trim();
