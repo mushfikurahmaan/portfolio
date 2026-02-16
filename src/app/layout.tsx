@@ -1,17 +1,6 @@
 import type { Metadata } from "next";
-import { Open_Sans, Geist_Mono } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
-
-const openSans = Open_Sans({
-  variable: "--font-open-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Mushfikur Rahman",
@@ -25,8 +14,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${openSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body>
+        <header className="site-header">
+          <nav className="site-nav">
+            <Link href="/">home</Link>
+            <Link href="/blog">blog</Link>
+            <Link href="/collection">collection</Link>
+          </nav>
+        </header>
+        <main className="main-content">{children}</main>
       </body>
     </html>
   );
