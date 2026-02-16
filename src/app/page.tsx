@@ -1,6 +1,5 @@
 import { AgeCounter } from "@/components/AgeCounter";
-import { PostCard } from "@/components/PostCard";
-import { profile, featuredPost } from "@/data/profile";
+import { profile } from "@/data/profile";
 
 export default function Home() {
   const nameLower = profile.name.toLowerCase();
